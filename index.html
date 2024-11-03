@@ -1,4 +1,3 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html>
   <head>
@@ -6,22 +5,25 @@
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
-    <ul id="messages"></ul>
-    <form id="form" action="">
-      <input id="input" autocomplete="off" /><button>Send</button>
-    </form>
+    <div class="container">
+      <header>
+        <h1>Chat Room</h1>
+      </header>
+      <ul id="messages"></ul>
+      <form id="form" action="">
+        <input id="input" autocomplete="off" placeholder="Type your message..." />
+        <button>Send</button>
+      </form>
+    </div>
 
-    <!-- Include Socket.IO -->
     <script src="/socket.io/socket.io.js"></script>
-    <!-- Include jQuery (used in the tutorial, but optional) -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- Client-side script -->
     <script>
       $(function () {
         const socket = io();
 
         $('form').submit(function (e) {
-          e.preventDefault(); // Prevent form from submitting normally
+          e.preventDefault(); 
           const msg = $('#input').val();
           if (msg) {
             socket.emit('chat message', msg);
@@ -32,7 +34,7 @@
 
         socket.on('chat message', function (msg) {
           $('#messages').append($('<li>').text(msg));
-          window.scrollTo(0, document.body.scrollHeight);
+          $('#messages')[0].scrollTop = $('#messages')[0].scrollHeight;
         });
       });
     </script>
