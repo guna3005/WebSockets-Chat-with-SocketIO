@@ -1,0 +1,40 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Socket.IO Chat</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <ul id="messages"></ul>
+    <form id="form" action="">
+      <input id="input" autocomplete="off" /><button>Send</button>
+    </form>
+
+    <!-- Include Socket.IO -->
+    <script src="/socket.io/socket.io.js"></script>
+    <!-- Include jQuery (used in the tutorial, but optional) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Client-side script -->
+    <script>
+      $(function () {
+        const socket = io();
+
+        $('form').submit(function (e) {
+          e.preventDefault(); // Prevent form from submitting normally
+          const msg = $('#input').val();
+          if (msg) {
+            socket.emit('chat message', msg);
+            $('#input').val('');
+          }
+          return false;
+        });
+
+        socket.on('chat message', function (msg) {
+          $('#messages').append($('<li>').text(msg));
+          window.scrollTo(0, document.body.scrollHeight);
+        });
+      });
+    </script>
+  </body>
+</html>

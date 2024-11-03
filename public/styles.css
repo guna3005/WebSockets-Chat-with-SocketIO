@@ -1,0 +1,52 @@
+/* public/styles.css */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background: #f9f9f9;
+  }
+  
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  li {
+    padding: 8px 16px;
+    background: #fff;
+    margin-bottom: 2px;
+  }
+  
+  #form {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: #fff;
+  }
+  
+  #input {
+    flex: 1;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+  }
+  
+  #input:focus {
+    outline: none;
+  }
+  
+  button {
+    background: #2979ff;
+    border: none;
+    padding: 10px 20px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  button:active {
+    background: #2962ff;
+  }
+  
